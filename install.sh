@@ -12,7 +12,8 @@ function slowprint () {
 }
 
 function main () {
-   if [ -d "/data/data/com.termux/files" ]; then
+   if [[ $(uname --all) == Linux\ localhost*Android ]]; then
+      stty -echo;
       echo -en "\e[41;1mImportant to note:\e[0m\n";
       sleep 0.5;
       echo -en "\e[33m";
@@ -21,6 +22,7 @@ function main () {
       slowprint "Only do this if you really know what you're doing.";
       sleep 2;
       echo -en "\e[0m\e[3F\e[0J";
+      stty echo;
 
       while true; do
          read -ep $'\e[41;1mImportant to note:\e[0m\n\e[33mThe installation will overwrite your existing configurations...\nOnly do this if you really know what you\'re doing.\e[0m\n\nContinue anyway (Y/n) > ';
@@ -31,12 +33,12 @@ function main () {
                local dirname="$(dirname "$0")";
                cp -r "$dirname/home/." $HOME/ 2> /dev/null;
                cp -r "$dirname/nano/." $PREFIX/share/nano/ 2> /dev/null;
-               echo -en "\e[1F\e[0K\e[32mIt's done.\e[0m\n";
-               echo -en "\e[97mPlease restart Termux in order the configurations to take effect.\e[0m\n";
+               echo -en "\e[1F\e[0K\e[32mDone\e[0m\n";
+               echo -en "\e[97mPlease restart Termux in order the configurations to take effect\e[0m\n";
                return 0;
                ;;
             n)
-               echo -en "\e[97mAbort.\e[0m\n";
+               echo -en "\e[97mAbort\e[0m\n";
                return 1;
                ;;
             *)
