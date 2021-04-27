@@ -2,7 +2,7 @@
    email = code.zulfilham@gmail.com    # Your email is going to be different.
    name = Zulfilham                    # Your name might be different as well.
 [core]
-   editor = /data/data/com.termux/files/usr/bin/nano
+   editor = /data/data/com.termux/files/usr/bin/vim
    autocrlf = false
    eol = lf
 
@@ -11,9 +11,13 @@
 [credential]
    helper = store
 [alias]
-   log-graph = "log --all --graph --date=local"
-   log-verbose = "log --all --graph --date=local --stat-width=81"
-   log-oneline = "log --all --oneline --date=local --graph"
+   log-all = "log --all"
+   log-graph = "log --graph --date=local"
+   log-graph-all = "log --all --graph --date=local"
+   log-verbose = "log --graph --date=local --stat-width=81"
+   log-verbose-all = "log --all --graph --date=local --stat-width=81"
+   log-oneline = "log --oneline --date=local --graph"
+   log-oneline-all = "log --all --oneline --date=local --graph"
    add-modified = "add -u"
    ls-files-untracked = "ls-files --exclude-standard --others"
    ls-files-cached = "diff --cached --name-only"
